@@ -4,8 +4,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-resource.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular-route.min.js"></script>
-<script src="https://cdn.firebase.com/js/client/1.0.18/firebase.js"></script>
-<script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
 
 <script src="TextboxItem.js"></script>
 <script src="app.js"></script>
@@ -14,17 +12,17 @@
 </head>
 <body>
 
-<!-- Main Area -->
-<div class="container" ng-controller="mainController">
-  <div ng-repeat="item in repository" class="TextboxItem" style="{{item.style()}}">
-  <a ng-href="#/edit/{{$index}}">
-  {{item.text()}}
-  </a>
+  <!-- main area -->
+  <div class="container" ng-controller="mainController">
+    <div ng-repeat="item in repository" class="TextboxItem" style="{{item.style()}}">
+    <a ng-href="#/edit/{{$index}}">
+    {{item.text()}} | top: {{ item.data.style.top }}, left: {{ item.data.style.left }}
+    </a>
+    </div>
   </div>
-</div>
 
-<!-- Editor Area -->
-<div class="editor" ng-view></div>
-
+  <!-- editor area -->
+  <div class="editor" ng-view></div>
+  
 </body>
 </html>

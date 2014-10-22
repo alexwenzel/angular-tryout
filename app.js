@@ -1,39 +1,39 @@
-// load modules
-angular.module("app", ['ngRoute'])
+// load modules, and create app
+var app = angular.module("app", ['ngRoute']);
 
-// an item
-.factory("TextboxItem", function(){
+// app item factory
+app.factory("TextboxItem", function(){
   return new TextboxItem();
-})
+});
 
-// the global repository
-.service("RepositoryService", [function(){
+// the global item repository
+app.service("RepositoryService", [function(){
   return [];
-}])
+}]);
 
-// router
-.config(function($routeProvider){
+// app router
+app.config(function($routeProvider){
   $routeProvider
     .when('/', {
       controller:'createController',
       templateUrl:'create.html',
     })
-    .when('/edit/:itemID', {
+    .when('/edit/:itemId', {
       controller:'editController',
       templateUrl:'edit.html',
     })
     .otherwise({
       redirectTo:'/'
     });
-})
+});
 
 // controller for main area
-.controller('mainController', ["$scope","RepositoryService",function($scope, RepositoryService) {
+app.controller('mainController', ["$scope","RepositoryService",function($scope, RepositoryService) {
   $scope.repository = RepositoryService;
-}])
+}]);
 
-// controller for create
-.controller('createController', ["$scope","RepositoryService",function($scope, RepositoryService) {
+// controller editor area: create
+app.controller('createController', ["$scope","RepositoryService",function($scope, RepositoryService) {
 
   $scope.addItem = function() {
 
@@ -52,13 +52,13 @@ angular.module("app", ['ngRoute'])
     $scope.color = "";
   };
 
-}])
+}]);
 
-// controller for edit area
-.controller('editController', ["$scope","$routeParams","RepositoryService",function($scope,$routeParams,RepositoryService) {
+// controller editor area: edit
+app.controller('editController', ["$scope","$routeParams","RepositoryService",function($scope,$routeParams,RepositoryService) {
 
-  var id = $routeParams.itemID;
+  var itemId = $routeParams.itemId;
 
-  $scope.item = RepositoryService[id];
+  $scope.item = RepositoryService[itemId];
 
 }]);

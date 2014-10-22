@@ -1,15 +1,23 @@
 // out: style.css, compress: true
 
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 .container {
   width: 600px;
   height: 600px;
   margin: 0 auto;
+  margin-top: 25px;
   border: 1px solid black;
 
   position: relative;
 
   .TextboxItem {
     position: absolute;
+    border: 1px solid black;
+    padding: 5px;
 
     a {
       text-decoration: none;
@@ -19,9 +27,11 @@
 }
 
 .editor {
-  width: 900px;
-  height: 200px;
-  margin: 0 auto;
-  margin-top: 50px;
+  width: 100%;
+  position: absolute;
   border: 1px solid black;
+  box-sizing: border-box;
+  bottom: 0px;
+  height: 200px;
+  text-align: center;
 }
